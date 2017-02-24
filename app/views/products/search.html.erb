@@ -14,10 +14,25 @@
 
           <div class="col-md-12 col-lg-9 col-lg-offset-1">
 
-            <div class="pull-right">
-              发布时间：<%= product.created_at.to_date %>
+            <div class="pull-left">
+              <td>
+                                  <%= link_to product_path(product) do %>
+                                  <% if product.image.present? %>
+                                  <%= image_tag(product.image.thumb.url, class: "thumbnail") %>
+                              <% else %>
+                                  <%= image_tag("https://ww1.sinaimg.cn/large/006y8lValy1fca38ugjwpj305l05kq2p.jpg", class: "thumbnail") %>
+                                  <% end %>
+                                  <% end %>
+                              </td>
+                              <td>
+                                  title:<%= product.title %>
+                              </td>
+                              <hr>
+                              <td>
+                                  price:￥<%= product.price %>
+                              </td>
+
             </div>
-            <p style="text-align: center;"><%= link_to(render_highlight_content(product,@query_string),product_path(product)) %></p>
 
           </div>
         </div>
